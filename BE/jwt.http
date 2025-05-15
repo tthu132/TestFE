@@ -1,0 +1,52 @@
+POST http://localhost:5000/user/login
+Content-Type: application/json
+
+{
+    "email":"thu@gmail.com",
+    "password":"123456"
+}
+
+###
+POST http://localhost:5000/user/create
+Content-Type: application/json
+
+{
+  "name": "thu",
+  "email": "thu@gmail.com",
+  "password": "123456",
+  "isAdmin": "false",
+  "phone": "0123456789",
+  "address": "Ninh Kiều,Cần Thơ",
+  "confirmPassword":"123456"
+}
+###
+GET http://localhost:5000/user/detail/6824d992e0155aa05930a5e9
+token: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjRkOTkyZTAxNTVhYTA1OTMwYTVlOSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3NDcyNzU1MTAsImV4cCI6MTc0NzMyOTUxMH0.Q18ONzC7oOfo8rgqcF0q40uCjY4Ha-f4lEo9-fJ8uYo
+###
+PUT http://localhost:5000/user/update/6824d824e0155aa05930a5e3
+Content-Type: application/json
+
+{
+  "address": "Hưng Lợi, Ninh Kiều,Cần Thơ"
+}
+###
+POST http://localhost:5000/product/create
+Content-Type: application/json
+
+{
+  "name": "Tư duy dã tràng - Tim trí giao tranh",
+  "price": 121000,
+  "type":"Sách",
+  "description": "Cuốn sách là viên gạch nối chúng ta với nhau, với xã hội chung quanh, với môi trường toàn cầu, tạo nên một thói quen mà chúng ta đã mất đi hoặc chưa bao giờ có: đó là khả năng lập luận, khả năng minh hoạ, chứng minh, ẩn dụ, suy luận... Chúng ta cần lý trí hoá trở lại những điều chúng ta thường vô tư nhận định mà không dựa vào một nền tảng căn cơ nào, ngoài việc nhân danh trực giác thuần tuý, hoặc tâm linh. Sách sẽ mang hai khía cạnh tưởng như tách bạch hoàn toàn, nhưng thật ra lại bổ sung cho nhau: đó là tư duy hệ thống và những phương pháp suy luận. Cả hai đều cần sử dụng trí tuệ, cả hai đều hiểu vai trò quan trọng của trực giác, nhưng cả hai sẽ cần huy động khả năng trí tuệ liên quan đến lập luận duy lý vô cùng cần thiết.",
+  "countInStock": 20,
+  "productCategory": "Sách kỹ năng",
+  "idsImage": [
+    "https://salt.tikicdn.com/cache/750x750/ts/product/c5/ef/6e/bceed9b18a1a31a0ea03edc2b35fcb78.jpg.webp"
+  ]
+}
+###
+GET http://localhost:5000/product/detail/68255b625a7edf84291defa9
+###
+GET http://localhost:5000/product/get-all
+###
+GET http://localhost:5000/product/search?q=a
