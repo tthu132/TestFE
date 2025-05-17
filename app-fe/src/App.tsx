@@ -55,7 +55,7 @@ function App() {
             const Page = route.component
 
 
-            if (route.isPublic) {
+            if (route.isPublic ) {
               return (
                 <Route
                   key={index}

@@ -8,7 +8,7 @@ const { authMiddleWare, authUserMiddleWare } = authMiddleware;
 router.post('/login', userController.loginUser)
 router.post('/create', userController.createUser)
 router.get('/detail/:id', authUserMiddleWare, userController.detailUser)
-router.put('/update/:id', authUserMiddleWare,userController.updateUser)
+router.put('/update/:id', userController.updateUser)
 router.post('/refresh-token', userController.refreshToken)
 router.post('/logout', userController.logoutUser)
 

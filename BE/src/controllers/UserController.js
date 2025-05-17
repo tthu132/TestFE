@@ -103,6 +103,8 @@ const updateUser = async (req, res) => {
 const detailUser = async (req, res) => {
     try {
         const userId = req.params.id
+        console.log('user backend', req);
+
         if (!userId) {
             return res.status(200).json({
                 status: 'ERR',

@@ -3,7 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import AppTheme from "../theme/AppTheme.tsx";
 import AppAppBar from "../components/AppAppBar.tsx";
-import MainContent from "../components/MainContent.tsx";
+import AccountProfile from "../components/AccountProfile.tsx";
 import { Typography, CircularProgress } from "@mui/material";
 import Footer from "../components/Footer.tsx";
 import "slick-carousel/slick/slick.css";
@@ -18,7 +18,7 @@ import { useLocation } from "react-router-dom";
 export default function Blog(props: { disableCustomTheme?: boolean }) {
   const location = useLocation();
   const userData = location.state?.userData;
-  console.log("userrrr: 0, ", userData);
+  console.log("userrrr trang account, ", userData);
 
   const settings = {
     dots: true,
@@ -53,7 +53,7 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
             boxShadow: 2,
           }}
         >
-          <AppAppBar user={userData?.data} />
+          <AppAppBar user={userData} />
         </Box>
 
         {/* Main (Slider + Content) */}
@@ -67,19 +67,8 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
               py: 4,
             }}
           >
-            <Slider {...settings}>
-              {images.map((url, idx) => (
-                <img
-                  key={idx}
-                  src={url}
-                  alt={`Slide ${idx}`}
-                  style={{ width: "100%", borderRadius: 8 }}
-                />
-              ))}
-            </Slider>
-
             <Box sx={{ mt: 3 }}>
-              <MainContent products={data?.data || []} />
+              <AccountProfile user={userData || []} />
             </Box>
           </Box>
         </Container>

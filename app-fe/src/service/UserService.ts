@@ -32,11 +32,9 @@ export const refreshToken = async () => {
 //     return res.data
 // }
 
-// export const updateUser = async (id, data, access_token,) => {
-//     const res = await axiosJWT.put(`http://localhost:5000/user/update-user/${id}`, data, {
-//         headers: {
-//             token: `Bearer ${access_token}`,
-//         }
-//     })
-//     return res.data
-// }
+export const updateUser = async (id, data, access_token,) => {
+    console.log('use 1000', id, data, access_token,);
+    
+    const res = await axiosJWT.put(`http://localhost:5000/user/update/${id}`, data)
+    return res.data
+}
