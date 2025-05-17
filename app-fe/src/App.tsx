@@ -17,14 +17,14 @@ function App() {
         setUser({ id: decoded.id, name: decoded.name })
         setToken(stored)
       } catch (e) {
-        // Token không hợp lệ => xóa
+
         localStorage.removeItem('access_token')
         setUser(null)
         setToken(null)
       }
     }
   }, [])
-  // Khi mở app, kiểm tra token trong localStorage
+
   useEffect(() => {
     const stored = localStorage.getItem('access_token')
     if (stored) {
@@ -34,7 +34,7 @@ function App() {
     }
   }, [])
 
-  // Gọi khi đăng nhập thành công
+
   const handleLogin = (token: string) => {
     localStorage.setItem('access_token', token)
     const decoded = jwtDecode<any>(token)
@@ -42,13 +42,11 @@ function App() {
     setToken(token)
   }
 
-  // Gọi khi đăng xuất
   const handleLogout = () => {
     localStorage.removeItem('access_token')
     setUser(null)
     setToken(null)
   }
-
   return (
     <Router>
       <div className="App">
@@ -56,7 +54,7 @@ function App() {
           {publicRoutes.map((route, index) => {
             const Page = route.component
 
-            // Nếu là route public => cho truy cập
+
             if (route.isPublic) {
               return (
                 <Route
@@ -67,8 +65,6 @@ function App() {
                 />
               )
             }
-
-            // Nếu không có token => redirect về login
             return (
               <Route
                 key={index}

@@ -17,7 +17,7 @@ import ForgotPassword from '../components/ForgotPassword.tsx';
 import AppTheme from '../theme/AppTheme.tsx';
 import ColorModeSelect from '../theme/ColorModeSelect.tsx';
 import { GoogleIcon, FacebookIcon } from '../components/CustomIcons.tsx';
-
+import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../hooks/useLogin.ts'
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -71,6 +71,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean; handleLogi
   const [open, setOpen] = React.useState(false);
   const loginMutation = useLogin();
    const { disableCustomTheme, handleLogin, handleLogout } = props;
+   const navigate = useNavigate();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -104,7 +105,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean; handleLogi
           console.log('✅ Token:', data.access_token);
           // localStorage.setItem('token', data.access_token);
           handleLogin?.(data.access_token);
-          // TODO: Chuyển hướng user
+          navigate('/', { replace: true });
         },
         onError: (error: any) => {
           console.error('❌ Login failed:', error.response?.data || error.message);
