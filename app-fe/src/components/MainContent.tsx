@@ -16,6 +16,7 @@ import { styled } from "@mui/material/styles";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import RssFeedRoundedIcon from "@mui/icons-material/RssFeedRounded";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const SyledCard = styled(Card)(({ theme }) => ({
   //   display: 'flex',
@@ -113,6 +114,7 @@ export function Search() {
   );
 }
 export interface Product {
+  _id: string;
   name: string;
   firstImage?: string;
   categoryName?: string;
@@ -144,7 +146,7 @@ export default function MainContent({ products }: { products: Product[] }) {
   const handleClick = () => {
     console.info("You clicked the filter chip.");
   };
-
+  const navigate = useNavigate();
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
       {/* <div>
@@ -247,7 +249,10 @@ export default function MainContent({ products }: { products: Product[] }) {
         }}
       >
         {products?.map((product, index) => (
-          <Box key={index}>
+          <Box
+            key={index}
+            onClick={() => navigate(`/product/${products[index]._id}`)}
+          >
             <SyledCard
               variant="outlined"
               onFocus={() => handleFocus(index)}
